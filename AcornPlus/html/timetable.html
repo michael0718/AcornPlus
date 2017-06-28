@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Acorn Plus</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
+  <link rel="stylesheet" href="../css/style.css">
+<!--   <link rel="stylesheet" href="css/course_list.css">  -->
+
+</head>
+
+  <!-- Navigation Bar -->
+  <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
+    <a id="back" href="#" class="w3-bar-item w3-button w3-text-red w3-hover-red"><b><i class="fa fa-map-marker w3-margin-right"></i>Back</b></a>
+    <a class="w3-nav-content"><img class="logo-img" src="../img/Logo.png" alt="Acorn+"></a>
+    <a class="w3-bar-item w3-button w3-right w3-hover-green w3-text-grey log" onclick="document.getElementById('login').style.display='block'" ><i class="fa fa-sign-in"></i>Login</a>
+
+    <div class="w3-dropdown-click w3-right">
+      <button id="save" class="w3-button w3-text-red">Save</button>
+    </div>
+    <div class="w3-dropdown-click w3-right">
+      <button id="cart" onclick="myFunction1()" class="w3-button w3-red">Theme</button>
+      <div id="coursefeed" class="w3-dropdown-content 3-border" style="z-index:2">
+        <a id="theme_0" class="w3-hover-blue w3-text-grey">White</a>
+        <a id="theme_1" class="w3-hover-blue w3-text-grey">Orange</a>
+        <a id="theme_2" class="w3-hover-blue w3-text-grey">Black/White</a>
+        <a id="theme_3" class="w3-hover-blue w3-text-grey">Light One</a>
+        <a id="theme_4" class="w3-hover-blue w3-text-grey">Light Two</a>
+      </div>
+    </div>
+    <div class="w3-dropdown-click w3-right">
+      <button id="cart2" onclick="myFunction2()" class="w3-button w3-text-grey">Timetable Color</button>
+      <div id="color" class="w3-dropdown-content 3-border" style="z-index:2">
+        <a id="color_0" class="w3-hover-blue w3-text-grey">White</a>
+        <a id="color_1" class="w3-hover-blue w3-text-grey">Yellow</a>
+        <a id="color_2" class="w3-hover-blue w3-text-grey">Pink</a>
+        <a id="color_3" class="w3-hover-blue w3-text-grey">Blue</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="cd-schedule loading tcolor" style="background:#ffe1d0; opacity:0.7">
+  	<div class="timeline tcolor-s" style="background:#ffb9b0; opacity:0.7">
+  		<ul>
+  			<li><span>09:00</span></li>
+        <li><span>09:30</span></li>
+  			<li><span>10:00</span></li>
+        <li><span>10:30</span></li>
+  			<li><span>11:00</span></li>
+        <li><span>11:30</span></li>
+        <li><span>12:00</span></li>
+  			<li><span>12:30</span></li>
+  			<li><span>13:00</span></li>
+        <li><span>13:30</span></li>
+  			<li><span>14:00</span></li>
+        <li><span>14:30</span></li>
+  			<li><span>15:00</span></li>
+        <li><span>15:30</span></li>
+  			<li><span>16:00</span></li>
+        <li><span>16:30</span></li>
+        <li><span>17:00</span></li>
+  			<li><span>17:30</span></li>
+  			<li><span>18:00</span></li>
+        <li><span>18:30</span></li>
+        <li><span>19:00</span></li>
+        <li><span>19:30</span></li>
+        <li><span>20:00</span></li>
+        <li><span>20:30</span></li>
+        <li><span>21:00</span></li>
+  		</ul>
+  	</div> <!-- .timeline -->
+
+  	<div class="events tcolor-l" style="background:#ffe1d0">
+  		<ul>
+  			<li class="events-group">
+  				<div class="top-info tcolor-s" style="background:#ffb9b0"><span>Monday</span></div>
+  				<ul id="monday">
+  				</ul>
+  			</li>
+  			<li class="events-group">
+  				<div class="top-info tcolor-s" style="background:#ffb9b0"><span>Tuesday</span></div>
+  				<ul id="tuesday">
+  				</ul>
+  			</li>
+  			<li class="events-group">
+  				<div class="top-info tcolor-s" style="background:#ffb9b0"><span>Wednesday</span></div>
+  				<ul id="wednesday">
+  				</ul>
+  			</li>
+  			<li class="events-group">
+  				<div class="top-info tcolor-s" style="background:#ffb9b0"><span>Thursday</span></div>
+  				<ul id="thursday">
+  				</ul>
+  			</li>
+  			<li class="events-group">
+  				<div class="top-info tcolor-s" style="background:#ffb9b0"><span>Friday</span></div>
+  				<ul id="friday">
+  				</ul>
+  			</li>
+  		</ul>
+  	</div>
+  	<div class="event-modal">
+  		<header class="header">
+  			<div class="content">
+  				<span class="event-date"></span>
+  				<span class="event-name"></span>
+  			</div>
+  			<div class="header-bg"></div>
+  		</header>
+  		<div class="body">
+  			<div class="event-info"></div>
+  			<div class="body-bg"></div>
+  		</div>
+  		<a href="#0" class="close">Close</a>
+  	</div>
+  	<div class="cover-layer"></div>
+</div> <!-- .cd-schedule -->
+
+  <div class="cover-layer"></div>
+<!-- .cd-schedule -->
+<script src="../frontend-js/modernizr.js"></script>
+<!--<script src="js/database.js"></script>
+<script src="js/timetable.js"></script>-->
+<script src="../frontend-js/course_list.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script>
+  if( !window.jQuery ) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
+</script>
+<script src="../frontend-js/main.js"></script>
+
+<script>
+// Tabs
+function openLink(evt, linkName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("myLink");
+  for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(linkName).style.display = "block";
+  evt.currentTarget.className += " w3-red";
+}
+
+function myFunction1() {
+    var x = document.getElementById("coursefeed");
+    if (x.className.indexOf("w3-show") == -1)
+        x.className += " w3-show";
+    else
+        x.className = x.className.replace(" w3-show", "");
+}
+
+function myFunction2() {
+    var x = document.getElementById("color");
+    if (x.className.indexOf("w3-show") == -1)
+        x.className += " w3-show";
+    else
+        x.className = x.className.replace(" w3-show", "");
+}
+
+</script>
+<!-- Resource jQuery -->
+<!-- <footer class="container-fluid">
+  <p>Footer Text</p >
+</footer> -->
+
+</body>
+</html>
